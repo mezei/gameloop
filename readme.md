@@ -2,6 +2,10 @@
 
 > the core methods/events of a game loop: start, end, pause, resume, update, draw
 
+## Fork
+
+Fixed: game loop now ends permanently after calling end() .
+
 ## Install
 
     npm install gameloop
