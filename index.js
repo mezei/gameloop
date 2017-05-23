@@ -27,6 +27,7 @@ function Game (options) {
   this.renderer = options.renderer || {}
   this.fps = options.fps || 60
   this.step = 1 / this.fps
+  this._ended = false
 }
 
 /**
@@ -52,6 +53,8 @@ Game.prototype.start = function start (state) {
 * @private
 */
 Game.prototype.frame = function frame (time) {
+  if (this._ended)
+      return
   if (!this.paused) {
     var newTime = now()
     var dt = (newTime - this.last) / 1000
@@ -101,6 +104,7 @@ Game.prototype.draw = function draw (renderer, frameState) {
 * game.end()
 */
 Game.prototype.end = function end (state) {
+  this._ended = true
   this.emit('end', state)
 }
 
